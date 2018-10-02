@@ -88,7 +88,7 @@ public class SearchItemServiceImpl implements SearchItemService {
 		BulkRequestBuilder bulkBuilder = client.prepareBulk();
 		try {
 			//查询商品列表
-			List<SearchHunter> hunterList = hunterMapper.getItemList();
+			List<SearchHunter> hunterList = hunterMapper.getHunterList();
 			Calendar nowTime = Calendar.getInstance();
 
 			//遍历商品列表
