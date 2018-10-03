@@ -100,7 +100,7 @@ public class SearchItem implements Serializable{
 		return num;
 	}
 
-	public void setNum(Integer click) {
-		this.num = click;
+	public void setNum(Integer num) {
+		this.num = num;
 	}
 }
