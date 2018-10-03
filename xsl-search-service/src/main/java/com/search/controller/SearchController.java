@@ -27,7 +27,7 @@ public class SearchController {
 	@Autowired
 	private SearchService searchService;
 
-	@RequestMapping(value="/query", method=RequestMethod.GET)
+	@RequestMapping(value="/item", method=RequestMethod.GET)
 	@ResponseBody
 	public XslResult search_item(@RequestParam String query,
                             @RequestParam(defaultValue="0")Integer page,
@@ -41,6 +41,27 @@ public class SearchController {
 		try {
 			System.out.println(query);
 			searchResult = searchService.search_item(query,page,rows,sort_type);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return XslResult.build(500, e.toString());
+		}
+		return XslResult.ok(searchResult);
+	}
+
+	@RequestMapping(value="/hunter", method=RequestMethod.GET)
+	@ResponseBody
+	public XslResult search_hunter(@RequestParam String query,
+								 @RequestParam(defaultValue="0")Integer page,
+								 @RequestParam(defaultValue="10")Integer rows,
+								 @RequestParam(defaultValue="0")Integer sort_type) {
+		//查询条件不能为空
+		if (query.isEmpty()) {
+			return XslResult.build(400, "查询条件不能为空");
+		}
+		SearchResult searchResult = null;
+		try {
+			System.out.println(query);
+			searchResult = searchService.search_hunter(query,page,rows,sort_type);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return XslResult.build(500, e.toString());

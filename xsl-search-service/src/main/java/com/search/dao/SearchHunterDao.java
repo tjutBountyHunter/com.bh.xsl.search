@@ -11,6 +11,7 @@ import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.sort.SortOrder;
+import org.springframework.stereotype.Repository;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,6 +21,8 @@ import java.util.Map;
 
 import static org.elasticsearch.index.query.QueryBuilders.functionScoreQuery;
 
+
+@Repository
 public class SearchHunterDao {
 
     private EsServer esServer;
@@ -32,15 +35,15 @@ public class SearchHunterDao {
                 .setTypes("hunter").setQuery(functionScoreQuery(QueryBuilders.matchPhraseQuery("descr", keyword)));
         switch (search_type){
             case 0:
-                requestBuilder = client.prepareSearch("test")
-                        .setTypes("item")
+                requestBuilder = client.prepareSearch("test2")
+                        .setTypes("hunter")
                         .setQuery(functionScoreQuery(QueryBuilders.multiMatchQuery(keyword,"descr")))
                         .addSort("credit", SortOrder.DESC);
                 break;
 
             case 1:
-                requestBuilder = client.prepareSearch("test")
-                        .setTypes("item")
+                requestBuilder = client.prepareSearch("test2")
+                        .setTypes("hunter")
                         .setQuery(functionScoreQuery(QueryBuilders.multiMatchQuery(keyword,"descr")))
                         .addSort("task_acc_num", SortOrder.DESC);
                 break;

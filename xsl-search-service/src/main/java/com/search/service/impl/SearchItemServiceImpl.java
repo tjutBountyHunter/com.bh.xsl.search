@@ -103,7 +103,7 @@ public class SearchItemServiceImpl implements SearchItemService {
 										.field("task_acc_num",searchHunter.getTaskaccnum())
 										.field("task_fail_num", searchHunter.getTaskfailnum())
 										.field("credit", searchHunter.getCredit())
-										.field("lasttime", searchHunter.getLasttime())
+										.field("last_time", searchHunter.getLasttime())
 										.endObject()
 						)
 				);
