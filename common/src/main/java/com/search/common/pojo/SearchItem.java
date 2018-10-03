@@ -22,7 +22,7 @@ public class SearchItem implements Serializable{
 
 	private Date revokedate;
 
-	private Integer click;
+	private Integer num;
 
 	public Integer getId() {
 		return id;
@@ -96,11 +96,11 @@ public class SearchItem implements Serializable{
 		this.revokedate = revokedate;
 	}
 
-	public Integer getClick() {
-		return click;
+	public Integer getNum() {
+		return num;
 	}
 
-	public void setClick(Integer click) {
-		this.click = click;
+	public void setNum(Integer click) {
+		this.num = click;
 	}
 }

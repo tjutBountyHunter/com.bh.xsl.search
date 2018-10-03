@@ -61,7 +61,7 @@ public class ItemAddMessageListener implements MessageListener {
 									.field("update_date", searchItem.getUpdatedate())
 									.field("create_date", searchItem.getCreatedate())
 									.field("revoke_date", searchItem.getRevokedate())
-									.field("click", searchItem.getClick())
+									.field("num", searchItem.getNum())
 									.endObject()
 					)
 			);

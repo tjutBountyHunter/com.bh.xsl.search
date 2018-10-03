@@ -51,7 +51,7 @@ public class ItemUpdateMessageListener implements MessageListener {
                                     .field("send_id", searchItem.getSendid())
                                     .field("update_date", searchItem.getUpdatedate())
                                     .field("revoke_date", searchItem.getRevokedate())
-                                    .field("click", searchItem.getClick())
+                                    .field("num", searchItem.getNum())
                                     .endObject()
                     );
             //提交

@@ -62,7 +62,7 @@ public class SearchItemServiceImpl implements SearchItemService {
 												 .field("money",searchItem.getMoney())
 												 .field("state", searchItem.getState())
 												 .field("create_date", searchItem.getCreatedate())
-												 .field("click", 0)
+												 .field("num", 0)
 												 .field("update_date",searchItem.getUpdatedate())
 												 .field("revoke_date",searchItem.getRevokedate())
 										.endObject()

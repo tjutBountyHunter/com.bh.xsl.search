@@ -55,8 +55,8 @@ public class SearchItemDao {
                         "long now_millis  = params.now_millis;" +
                         "long difference = now_millis - data_millis + 28800000;" +
                         "double difference_of_hour = difference/3600000;" +
-                        "long click=doc['click'].value;" +
-                        "double score = 100*(_score+Math.log(click+1))/(difference_of_hour+5);" +
+                        "long num=doc['num'].value;" +
+                        "double score = 100*(_score+Math.log(num+1))/(difference_of_hour+5);" +
                         "return score;";
                 Script script = new Script( ScriptType.INLINE, "painless",inlineScript, params);
                 ScriptScoreFunctionBuilder scriptBuilder = ScoreFunctionBuilders.scriptFunction(script);
@@ -97,7 +97,7 @@ public class SearchItemDao {
             SearchItem item = new SearchItem();
 			item.setId(Integer.parseInt(hit.getId()));
 			item.setCid((Integer) hit_source.get("cid"));
-			item.setClick((Integer) hit_source.get("click"));
+			item.setNum((Integer) hit_source.get("num"));
 			item.setSendid((Integer) hit_source.get("send_id"));
 			item.setDescr((String) hit_source.get("descr"));
             item.setState((Integer) hit_source.get("state"));
