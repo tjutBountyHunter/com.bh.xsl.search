@@ -26,17 +26,11 @@
         </constructor-arg>
     </bean>
     <!--这个是主题目的地，一对多的 -->
-    <bean id="topicDestination" class="org.apache.activemq.command.ActiveMQTopic">
-        <constructor-arg value="addTaskMQ" />
+    <bean id="topicHunterAddDestination" class="org.apache.activemq.command.ActiveMQTopic">
+        <constructor-arg value="addHunterMQ" />
     </bean>
-    <bean id="topicDeleteDestination" class="org.apache.activemq.command.ActiveMQTopic">
-        <constructor-arg value="deleteTaskMQ" />
-    </bean>
-    <bean id="topicClickDestination" class="org.apache.activemq.command.ActiveMQTopic">
-        <constructor-arg value="numberTaskMQ" />
-    </bean>
-    <bean id="topicUpdateDestination" class="org.apache.activemq.command.ActiveMQTopic">
-        <constructor-arg value="alterTaskMQ" />
+    <bean id="topicHunterUpdateDestination" class="org.apache.activemq.command.ActiveMQTopic">
+        <constructor-arg value="alterHunterMQ" />
     </bean>
 
     <bean id="myMessageListener" class="com.search.message.MyMessageListener"/>
@@ -46,33 +40,21 @@
         <property name="destination" ref="queueDestination" />
         <property name="messageListener" ref="myMessageListener" />
     </bean>
-    <!-- 监听任务添加消息，同步索引库 -->
-    <bean id="itemAddMessageListener" class="com.search.message.ItemAddMessageListener"/>
+    <!-- 监听任务添加猎人，同步索引库 -->
+    <bean id="itemAddMessageListener" class="com.search.message.HunterAddMessageListener"/>
     <bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
         <property name="connectionFactory" ref="connectionFactory" />
-        <property name="destination" ref="topicDestination" />
+        <property name="destination" ref="topicHunterAddDestination" />
         <property name="messageListener" ref="itemAddMessageListener" />
     </bean>
-    <!-- 监听任务删除消息，同步索引库 -->
-    <bean id="itemDeleteMessageListener" class="com.search.message.ItemDeleteMessageListener"/>
+
+    <!-- 监听更新猎人，同步索引库 -->
+    <bean id="itemUpdateMessageListener" class="com.search.message.HunterUpdateMessageListener"/>
     <bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
         <property name="connectionFactory" ref="connectionFactory" />
-        <property name="destination" ref="topicDeleteDestination" />
+        <property name="destination" ref="topicHunterUpdateDestination" />
         <property name="messageListener" ref="itemDeleteMessageListener" />
     </bean>
-    <!-- 监听更新任务消息，同步索引库 -->
-    <bean id="itemUpdateMessageListener" class="com.search.message.ItemUpdateMessageListener"/>
-    <bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
-        <property name="connectionFactory" ref="connectionFactory" />
-        <property name="destination" ref="topicUpdateDestination" />
-        <property name="messageListener" ref="itemDeleteMessageListener" />
-    </bean>
-    <!-- 监听点击消息，同步索引库，增加该任务点击量 -->
-    <bean id="clickListener" class="com.search.message.ItemClickListener"/>
-    <bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
-        <property name="connectionFactory" ref="connectionFactory" />
-        <property name="destination" ref="topicClickDestination" />
-        <property name="messageListener" ref="clickListener" />
-    </bean>
+
 
 </beans>

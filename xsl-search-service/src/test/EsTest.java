@@ -112,9 +112,9 @@ public class EsTest {
         ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://47.93.230.61:61616");
         Connection connection = connectionFactory.createConnection();
         Session session = connection.createSession(false,Session.AUTO_ACKNOWLEDGE);
-        Topic topic = session.createTopic("itemClickTopic");
+        Topic topic = session.createTopic("addHunterMQ");
         MessageProducer producer = session.createProducer(topic);
-        TextMessage textMessage = session.createTextMessage("19971025");
+        TextMessage textMessage = session.createTextMessage("1979");
         producer.send(textMessage);
         producer.close();
         session.close();
