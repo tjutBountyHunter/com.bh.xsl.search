@@ -41,19 +41,19 @@
         <property name="messageListener" ref="myMessageListener" />
     </bean>
     <!-- 监听任务添加猎人，同步索引库 -->
-    <bean id="itemAddMessageListener" class="com.search.message.HunterAddMessageListener"/>
+    <bean id="hunterAddMessageListener" class="com.search.message.HunterAddMessageListener"/>
     <bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
         <property name="connectionFactory" ref="connectionFactory" />
         <property name="destination" ref="topicHunterAddDestination" />
-        <property name="messageListener" ref="itemAddMessageListener" />
+        <property name="messageListener" ref="hunterAddMessageListener" />
     </bean>
 
     <!-- 监听更新猎人，同步索引库 -->
-    <bean id="itemUpdateMessageListener" class="com.search.message.HunterUpdateMessageListener"/>
+    <bean id="hunterUpdateMessageListener" class="com.search.message.HunterUpdateMessageListener"/>
     <bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
         <property name="connectionFactory" ref="connectionFactory" />
         <property name="destination" ref="topicHunterUpdateDestination" />
-        <property name="messageListener" ref="itemDeleteMessageListener" />
+        <property name="messageListener" ref="hunterUpdateMessageListener" />
     </bean>
 
 

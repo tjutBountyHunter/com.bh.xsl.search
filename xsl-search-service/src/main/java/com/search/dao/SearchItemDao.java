@@ -98,16 +98,27 @@ public class SearchItemDao {
 			item.setId(Integer.parseInt(hit.getId()));
 			item.setCid((Integer) hit_source.get("cid"));
 			item.setNum((Integer) hit_source.get("num"));
+            item.setMoney((Double) hit_source.get("money"));
 			item.setSendid((Integer) hit_source.get("send_id"));
 			item.setDescr((String) hit_source.get("descr"));
             item.setState((Integer) hit_source.get("state"));
+
             String date = hit_source.get("create_date").toString();
             date = date.replace("Z", " UTC");//注意是空格+UTC
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS Z");//注意格式化的表达式
-            Date d = format.parse(date);
+            Date create_date = format.parse(date);
+            item.setCreatedate(create_date);
 
-            item.setCreatedate(d);
-            item.setUpdatedate(d);
+            date = hit_source.get("update_date").toString();
+            date = date.replace("Z", " UTC");//注意是空格+UTC
+            Date update_date = format.parse(date);
+            item.setUpdatedate(update_date);
+
+            date = hit_source.get("deadline").toString();
+            date = date.replace("Z", " UTC");//注意是空格+UTC
+            Date deadline = format.parse(date);
+            item.setDeadline(deadline);
+
             itemList.add(item);
         }
         result.setItemList(itemList);

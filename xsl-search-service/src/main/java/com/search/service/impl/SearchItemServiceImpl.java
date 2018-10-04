@@ -64,7 +64,7 @@ public class SearchItemServiceImpl implements SearchItemService {
 												 .field("create_date", searchItem.getCreatedate())
 												 .field("num", 0)
 												 .field("update_date",searchItem.getUpdatedate())
-												 .field("revoke_date",searchItem.getRevokedate())
+												 .field("deadline",searchItem.getDeadline())
 										.endObject()
 								)
 				);

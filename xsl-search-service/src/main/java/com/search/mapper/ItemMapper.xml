@@ -11,7 +11,7 @@
 			state,
 			createDate,
 			updateDate,
-			revokeDate,
+			deadline,
 			num
 		FROM
 			xsl_task
@@ -27,7 +27,7 @@
 			state,
 			createDate,
 			updateDate,
-			revokeDate,
+			deadline,
 			num
 		FROM
 			xsl_task

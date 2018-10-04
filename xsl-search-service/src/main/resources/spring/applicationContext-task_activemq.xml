@@ -65,7 +65,7 @@
     <bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
         <property name="connectionFactory" ref="connectionFactory" />
         <property name="destination" ref="topicTaskUpdateDestination" />
-        <property name="messageListener" ref="itemDeleteMessageListener" />
+        <property name="messageListener" ref="itemUpdateMessageListener" />
     </bean>
     <!-- 监听点击消息，同步索引库，增加该任务点击量 -->
     <bean id="clickListener" class="com.search.message.ItemClickListener"/>

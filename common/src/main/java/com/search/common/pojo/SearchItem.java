@@ -20,7 +20,7 @@ public class SearchItem implements Serializable{
 
 	private Date updatedate;
 
-	private Date revokedate;
+	private Date deadline;
 
 	private Integer num;
 
@@ -88,12 +88,12 @@ public class SearchItem implements Serializable{
 		this.updatedate = updatedate;
 	}
 
-	public Date getRevokedate() {
-		return revokedate;
+	public Date getDeadline() {
+		return deadline;
 	}
 
-	public void setRevokedate(Date revokedate) {
-		this.revokedate = revokedate;
+	public void setDeadline(Date deadline) {
+		this.deadline = deadline;
 	}
 
 	public Integer getNum() {

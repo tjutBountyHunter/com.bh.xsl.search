@@ -1,11 +1,12 @@
 package com.search.message;
 
+import com.search.common.pojo.SearchItem;
 import com.search.es.EsServer;
 import com.search.mapper.ItemMapper;
-import com.search.common.pojo.SearchItem;
 import org.elasticsearch.action.update.UpdateRequest;
 import org.elasticsearch.action.update.UpdateResponse;
 import org.elasticsearch.client.transport.TransportClient;
+import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.common.xcontent.XContentFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -38,11 +39,8 @@ public class ItemUpdateMessageListener implements MessageListener {
             //根据商品id查询商品信息
             SearchItem searchItem = itemMapper.getItemById(itemId);
             //向文档对象中添加域
-            request.index("test")
-                    .type("item")
-                    .id(searchItem.getId()+"")
-                    .doc(
-                            XContentFactory.jsonBuilder()
+
+            XContentBuilder builder = XContentFactory.jsonBuilder()
                                     .startObject()
                                     .field("cid", searchItem.getCid())
                                     .field("descr", searchItem.getDescr())
@@ -50,12 +48,14 @@ public class ItemUpdateMessageListener implements MessageListener {
                                     .field("state", searchItem.getState())
                                     .field("send_id", searchItem.getSendid())
                                     .field("update_date", searchItem.getUpdatedate())
-                                    .field("revoke_date", searchItem.getRevokedate())
+                                    .field("createDate", searchItem.getCreatedate())
+                                    .field("deadline", searchItem.getDeadline())
                                     .field("num", searchItem.getNum())
-                                    .endObject()
-                    );
+                                    .endObject();
+
             //提交
-            UpdateResponse response = client.update(request).get();
+
+            UpdateResponse response = client.prepareUpdate("test", "item",String.valueOf(itemId)).setDoc(builder).get();
             client.close();
         } catch (Exception e) {
             e.printStackTrace();
