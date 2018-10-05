@@ -40,6 +40,7 @@ public class SearchItemDao {
 	 */
     private EsServer esServer;
 
+    //任务描述搜索，传入参数：关键词，第几页，一页有多少行，排序方式（0:按热度排序，1:按悬赏金额倒叙，2:按悬赏金额正序，3:按发布时间倒序）
 	public SearchResult search(String keyword, int page, int rows ,int search_type) throws Exception {
         SearchResult result = new SearchResult();
         esServer = new EsServer();

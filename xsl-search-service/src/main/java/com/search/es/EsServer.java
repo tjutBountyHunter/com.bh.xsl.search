@@ -7,6 +7,8 @@ import org.elasticsearch.transport.client.PreBuiltTransportClient;
 
 import java.net.InetAddress;
 
+
+//搜索节点
 public class EsServer {
     private TransportClient client;
     private static String[] hosts = new String[] {

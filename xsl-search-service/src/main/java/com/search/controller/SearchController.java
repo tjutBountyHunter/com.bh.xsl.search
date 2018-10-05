@@ -13,13 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * 商品查询Controller
- * <p>Title: SearchController</p>
- * <p>Description: </p>
- * <p>Company: www.itcast.com</p>
- * @author	入云龙
- * @date	2015年9月11日下午4:22:42
- * @version 1.0
+ *
  */
 @Controller
 public class SearchController {

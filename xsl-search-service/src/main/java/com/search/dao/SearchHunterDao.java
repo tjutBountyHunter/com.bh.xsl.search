@@ -27,6 +27,12 @@ public class SearchHunterDao {
 
     private EsServer esServer;
 
+
+
+
+    //猎人描述搜索，传入参数：关键词，第几页，一页有多少行，排序方式（0:按信用倒序 2:按任务成功数倒序）
+
+
     public SearchResult search(String keyword, int page, int rows , int search_type) throws Exception {
         SearchResult result = new SearchResult();
         esServer = new EsServer();
