@@ -1,8 +1,8 @@
 package com.test;
 
-import com.search.common.SearchResult;
-import com.search.common.pojo.SearchItem;
-import com.search.service.SearchService;
+import com.xsl.search.export.SearchService;
+import com.xsl.search.service.common.SearchResult;
+import com.xsl.search.service.common.pojo.SearchItem;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

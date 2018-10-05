@@ -11,6 +11,7 @@
     <modules>
         <module>xsl-search-service</module>
         <module>common</module>
+        <module>xsl-search-export</module>
     </modules>
 
     <name>Maven</name>

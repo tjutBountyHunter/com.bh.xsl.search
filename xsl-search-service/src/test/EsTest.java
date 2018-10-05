@@ -1,4 +1,4 @@
-import com.search.es.EsServer;
+import com.xsl.search.service.es.EsServer;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.elasticsearch.action.ActionFuture;
 import org.elasticsearch.action.get.GetResponse;
@@ -112,9 +112,9 @@ public class EsTest {
         ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://47.93.230.61:61616");
         Connection connection = connectionFactory.createConnection();
         Session session = connection.createSession(false,Session.AUTO_ACKNOWLEDGE);
-        Topic topic = session.createTopic("alterTaskMQ");
+        Topic topic = session.createTopic("numberTaskMQ");
         MessageProducer producer = session.createProducer(topic);
-        TextMessage textMessage = session.createTextMessage("32");
+        TextMessage textMessage = session.createTextMessage("67");
         producer.send(textMessage);
         producer.close();
         session.close();

@@ -75,6 +75,11 @@
             <artifactId>common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.xsl</groupId>
+            <artifactId>xsl-search-export</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <!-- Spring -->
         <!-- Spring -->
         <dependency>

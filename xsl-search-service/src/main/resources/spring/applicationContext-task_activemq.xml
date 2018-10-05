@@ -39,36 +39,29 @@
         <constructor-arg value="alterTaskMQ" />
     </bean>
 
-    <bean id="myMessageListener" class="com.search.message.MyMessageListener"/>
-    <!-- 消息监听容器 -->
-    <bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
-        <property name="connectionFactory" ref="connectionFactory" />
-        <property name="destination" ref="queueDestination" />
-        <property name="messageListener" ref="myMessageListener" />
-    </bean>
     <!-- 监听任务添加消息，同步索引库 -->
-    <bean id="itemAddMessageListener" class="com.search.message.ItemAddMessageListener"/>
+    <bean id="itemAddMessageListener" class="com.xsl.search.service.message.ItemAddMessageListener"/>
     <bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
         <property name="connectionFactory" ref="connectionFactory" />
         <property name="destination" ref="topicTaskAddDestination" />
         <property name="messageListener" ref="itemAddMessageListener" />
     </bean>
     <!-- 监听任务删除消息，同步索引库 -->
-    <bean id="itemDeleteMessageListener" class="com.search.message.ItemDeleteMessageListener"/>
+    <bean id="itemDeleteMessageListener" class="com.xsl.search.service.message.ItemDeleteMessageListener"/>
     <bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
         <property name="connectionFactory" ref="connectionFactory" />
         <property name="destination" ref="topicTaskDeleteDestination" />
         <property name="messageListener" ref="itemDeleteMessageListener" />
     </bean>
     <!-- 监听更新任务消息，同步索引库 -->
-    <bean id="itemUpdateMessageListener" class="com.search.message.ItemUpdateMessageListener"/>
+    <bean id="itemUpdateMessageListener" class="com.xsl.search.service.message.ItemUpdateMessageListener"/>
     <bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
         <property name="connectionFactory" ref="connectionFactory" />
         <property name="destination" ref="topicTaskUpdateDestination" />
         <property name="messageListener" ref="itemUpdateMessageListener" />
     </bean>
     <!-- 监听点击消息，同步索引库，增加该任务点击量 -->
-    <bean id="clickListener" class="com.search.message.ItemClickListener"/>
+    <bean id="clickListener" class="com.xsl.search.service.message.ItemClickListener"/>
     <bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
         <property name="connectionFactory" ref="connectionFactory" />
         <property name="destination" ref="topicTaskClickDestination" />
