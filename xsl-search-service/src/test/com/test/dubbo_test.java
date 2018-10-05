@@ -2,7 +2,6 @@ package com.test;
 
 import com.xsl.search.export.SearchService;
 import com.xsl.search.service.common.SearchResult;
-import com.xsl.search.service.common.pojo.SearchItem;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -16,14 +15,14 @@ public class dubbo_test {
         searchService =  (SearchService) context.getBean("searchService");
         SearchResult searchResult = null;
         try {
-            searchResult = searchService.search_item("快递",0,10,3);
+            searchResult = searchService.search_hunter("快递",0,10,1);
         }catch (Exception e){
             e.printStackTrace();
         }
 
-        for (SearchItem item: searchResult.getItemList()) {
-            System.out.print(item.getId());
-            System.out.print("\n");
-        }
+//        for (SearchHunter item: searchResult.getHunterList()) {
+//            System.out.print(item.getId());
+//            System.out.print("\n");
+//        }
     }
 }

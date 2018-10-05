@@ -1,9 +1,8 @@
 package com.xsl.search.service.common.pojo;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class SearchItem implements Serializable{
+public class SearchItem{
 	private Integer id;
 
 	private Integer cid;

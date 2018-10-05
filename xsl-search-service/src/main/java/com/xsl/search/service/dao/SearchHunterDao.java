@@ -1,7 +1,7 @@
 package com.xsl.search.service.dao;
 
 import com.xsl.search.service.common.SearchResult;
-import com.xsl.search.service.common.pojo.SearchHunter;
+import com.xsl.search.service.common.pojo.HunterTransfer;
 import com.xsl.search.service.common.pojo.SearchItem;
 import com.xsl.search.service.es.EsServer;
 import org.elasticsearch.action.search.SearchRequestBuilder;
@@ -58,11 +58,11 @@ public class SearchHunterDao {
 
         SearchResponse searchResponse = requestBuilder.setFrom(page*rows).setSize(rows).execute().actionGet();
         SearchHits hits = searchResponse.getHits();
-        List<SearchHunter> hunterList = new ArrayList<>(page*rows);
+        List<HunterTransfer> hunterList = new ArrayList<>(page*rows);
         for(SearchHit hit:hits){
             Map<String,Object> hit_source = hit.getSourceAsMap();
 
-            SearchHunter hunter = new SearchHunter();
+            HunterTransfer hunter = new HunterTransfer();
 
             SearchItem item = new SearchItem();
 
@@ -74,12 +74,15 @@ public class SearchHunterDao {
             hunter.setCredit((Integer) hit_source.get("credit"));
             hunter.setDescr((String) hit_source.get("descr"));
 
+            //日期格式转换
+            SimpleDateFormat format0 = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS Z");//注意格式化的表达式
+
             String date = hit_source.get("last_time").toString();
             date = date.replace("Z", " UTC");//注意是空格+UTC
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS Z");//注意格式化的表达式
-            Date d = format.parse(date);
-
-            hunter.setLasttime(d);
+            Date lasttime = format.parse(date);
+            String lasttime_str = format0.format(lasttime);
+            hunter.setLasttime(lasttime_str);
 
             hunterList.add(hunter);
         }

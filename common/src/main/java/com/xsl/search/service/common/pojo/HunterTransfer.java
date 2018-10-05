@@ -1,9 +1,8 @@
 package com.xsl.search.service.common.pojo;
 
+import java.io.Serializable;
 
-import java.util.Date;
-
-public class SearchHunter{
+public class HunterTransfer implements Serializable {
     private Integer id;
 
     private Integer level;
@@ -18,7 +17,7 @@ public class SearchHunter{
 
     private String descr;
 
-    private Date lasttime;
+    private String lasttime;
 
     public Integer getId() {
         return id;
@@ -76,11 +75,11 @@ public class SearchHunter{
         this.descr = descr == null ? null : descr.trim();
     }
 
-    public Date getLasttime() {
+    public String getLasttime() {
         return lasttime;
     }
 
-    public void setLasttime(Date lasttime) {
+    public void setLasttime(String lasttime) {
         this.lasttime = lasttime;
     }
 }
