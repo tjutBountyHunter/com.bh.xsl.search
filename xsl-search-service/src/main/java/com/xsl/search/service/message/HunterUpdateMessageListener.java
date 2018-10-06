@@ -36,6 +36,9 @@ public class HunterUpdateMessageListener implements MessageListener {
             Thread.sleep(1000);
             //根据商品id查询商品信息
             SearchHunter searchHunter = hunterMapper.getHunterById(itemId);
+            if(searchHunter == null){
+                throw new Exception("更新猎人时查询数据表失败");
+            }
             //向文档对象中添加域
 
             XContentBuilder builder = XContentFactory.jsonBuilder()

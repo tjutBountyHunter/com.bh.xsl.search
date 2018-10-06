@@ -19,6 +19,10 @@ public class HunterTransfer implements Serializable {
 
     private String lasttime;
 
+    private Integer state;
+
+    private String url;
+
     public Integer getId() {
         return id;
     }
@@ -81,5 +85,21 @@ public class HunterTransfer implements Serializable {
 
     public void setLasttime(String lasttime) {
         this.lasttime = lasttime;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

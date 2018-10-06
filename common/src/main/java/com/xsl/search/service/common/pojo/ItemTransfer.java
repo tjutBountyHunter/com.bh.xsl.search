@@ -7,6 +7,8 @@ public class ItemTransfer implements Serializable {
 
     private Integer cid;
 
+    private String taskid;
+
     private String descr;
 
     private Integer sendid;
@@ -21,7 +23,16 @@ public class ItemTransfer implements Serializable {
 
     private String deadline;
 
-    private Integer num;
+    private Integer number;
+
+    private String url;
+
+    private String name;
+
+    private String task_name;
+
+    private Integer level;
+
 
     public Integer getId() {
         return id;
@@ -95,11 +106,42 @@ public class ItemTransfer implements Serializable {
         this.deadline = deadline;
     }
 
-    public Integer getNum() {
-        return num;
+    public Integer getNumber() {
+        return number;
     }
 
-    public void setNum(Integer num) {
-        this.num = num;
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+
+    public String getUrl(){ return url; }
+
+    public void setUrl(String url){ this.url = url; }
+
+    public String getName(){ return name; }
+
+    public void setName(String name){ this.name = name; }
+
+    public String getTask_name(){return task_name;}
+
+    public void setTask_name(String task_name) {
+        this.task_name = task_name;
+    }
+
+    public String getTaskid() {
+        return taskid;
+    }
+
+    public void setTaskid(String taskid) {
+        this.taskid = taskid;
+    }
+
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
     }
 }

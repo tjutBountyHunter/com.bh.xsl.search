@@ -73,6 +73,8 @@ public class SearchHunterDao {
             hunter.setTaskfailnum((Integer) hit_source.get("task_fail_num"));
             hunter.setCredit((Integer) hit_source.get("credit"));
             hunter.setDescr((String) hit_source.get("descr"));
+            hunter.setState((Integer) hit_source.get("state"));
+            hunter.setUrl((String) hit_source.get("url"));
 
             //日期格式转换
             SimpleDateFormat format0 = new SimpleDateFormat("yyyy-MM-dd");

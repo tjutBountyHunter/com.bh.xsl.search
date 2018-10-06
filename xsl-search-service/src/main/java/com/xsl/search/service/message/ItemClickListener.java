@@ -29,7 +29,7 @@ public class ItemClickListener implements MessageListener {
             //等待事务提交
             Thread.sleep(1000);
             //设置script令click自增1
-            String inlineScript = "ctx._source.num=ctx._source.num+1;";
+            String inlineScript = "ctx._source.number=ctx._source.number+1;";
 
             Map<String, Object> params = new HashMap<>();
             Script script = new Script(ScriptType.INLINE, "painless",inlineScript, params);

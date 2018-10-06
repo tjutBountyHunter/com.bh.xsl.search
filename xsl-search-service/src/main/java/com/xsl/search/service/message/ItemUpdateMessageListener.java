@@ -38,6 +38,9 @@ public class ItemUpdateMessageListener implements MessageListener {
             Thread.sleep(1000);
             //根据商品id查询商品信息
             SearchItem searchItem = itemMapper.getItemById(itemId);
+            if(searchItem == null){
+                throw new Exception("更新任务过程中查询数据库失败");
+            }
             //向文档对象中添加域
 
             XContentBuilder builder = XContentFactory.jsonBuilder()
@@ -50,7 +53,12 @@ public class ItemUpdateMessageListener implements MessageListener {
                                     .field("update_date", searchItem.getUpdatedate())
                                     .field("createDate", searchItem.getCreatedate())
                                     .field("deadline", searchItem.getDeadline())
-                                    .field("num", searchItem.getNum())
+                                    .field("number", searchItem.getNumber())
+                                    .field("name", searchItem.getName())
+                                    .field("url", searchItem.getUrl())
+                                    .field("task_num", searchItem.getTask_name())
+                                    .field("task_id",searchItem.getTaskid())
+                                    .field("level",searchItem.getLevel())
                                     .endObject();
 
             //提交

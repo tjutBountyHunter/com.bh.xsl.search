@@ -40,6 +40,9 @@ public class HunterAddMessageListener implements MessageListener {
             Thread.sleep(1000);
             //根据商品id查询商品信息
             SearchHunter searchHunter = hunterMapper.getHunterById(itemId);
+            if(searchHunter == null){
+                throw new Exception("添加猎人时查询数据表失败");
+            }
             //向文档对象中添加域
             bulkBuilder.add(client.prepareIndex("test2", "hunter",searchHunter.getId().toString())
                     .setSource(
@@ -52,6 +55,8 @@ public class HunterAddMessageListener implements MessageListener {
                                     .field("task_fail_num", searchHunter.getTaskfailnum())
                                     .field("credit", searchHunter.getCredit())
                                     .field("last_time", searchHunter.getLasttime())
+                                    .field("state",searchHunter.getState())
+                                    .field("url",searchHunter.getUrl())
                                     .endObject()
                     )
             );

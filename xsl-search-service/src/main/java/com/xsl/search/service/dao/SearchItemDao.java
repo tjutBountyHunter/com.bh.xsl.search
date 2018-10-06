@@ -57,7 +57,7 @@ public class SearchItemDao {
                         "long now_millis  = params.now_millis;" +
                         "long difference = now_millis - data_millis + 28800000;" +
                         "double difference_of_hour = difference/3600000;" +
-                        "long num=doc['num'].value;" +
+                        "long num=doc['number'].value;" +
                         "double score = 100*(_score+Math.log(num+1))/(difference_of_hour+5);" +
                         "return score;";
                 Script script = new Script( ScriptType.INLINE, "painless",inlineScript, params);
@@ -104,11 +104,16 @@ public class SearchItemDao {
             ItemTransfer item = new ItemTransfer();
 			item.setId(Integer.parseInt(hit.getId()));
 			item.setCid((Integer) hit_source.get("cid"));
-			item.setNum((Integer) hit_source.get("num"));
+			item.setNumber((Integer) hit_source.get("number"));
             item.setMoney((Double) hit_source.get("money"));
 			item.setSendid((Integer) hit_source.get("send_id"));
 			item.setDescr((String) hit_source.get("descr"));
             item.setState((Integer) hit_source.get("state"));
+            item.setName((String) hit_source.get("name"));
+            item.setUrl((String) hit_source.get("url"));
+            item.setTask_name((String) hit_source.get("task_name"));
+            item.setTaskid((String) hit_source.get("task_id"));
+            item.setLevel((Integer) hit_source.get("level"));
 
 
             SimpleDateFormat format0 = new SimpleDateFormat("yyyy-MM-dd");

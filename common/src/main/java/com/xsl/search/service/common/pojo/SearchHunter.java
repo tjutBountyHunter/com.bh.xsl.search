@@ -20,6 +20,10 @@ public class SearchHunter{
 
     private Date lasttime;
 
+    private Integer state;
+
+    private String url;
+
     public Integer getId() {
         return id;
     }
@@ -82,5 +86,21 @@ public class SearchHunter{
 
     public void setLasttime(Date lasttime) {
         this.lasttime = lasttime;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

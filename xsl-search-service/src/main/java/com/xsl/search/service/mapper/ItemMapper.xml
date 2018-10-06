@@ -3,35 +3,62 @@
 <mapper namespace="com.xsl.search.service.mapper.ItemMapper" >
 	<select id="getItemList" resultType="com.xsl.search.service.common.pojo.SearchItem">
 		SELECT
-			id,
-			cid,
-			descr,
-			sendId,
-			money,
-			state,
-			createDate,
-			updateDate,
-			deadline,
-			num
+			xsl_task.id,
+		    xsl_task.cid,
+			xsl_task.descr,
+			xsl_task.sendId,
+			xsl_task.money,
+			xsl_task.state,
+			xsl_task.taskId,
+			xsl_task.createDate,
+			xsl_task.updateDate,
+			xsl_task.deadline,
+			xsl_task.number,
+			xsl_file.url,
+			xsl_user.name,
+			xsl_task_category.name 'task_name',
+			xsl_master.level
+
 		FROM
-			xsl_task
+			xsl_task,xsl_file,xsl_user,xsl_task_category,xsl_master
+		WHERE
+			xsl_task.sendId = xsl_user.masterId
+		AND
+			xsl_user.id = xsl_file.userId
+		AND
+			xsl_task.cid = xsl_task_category.id
+		AND
+			xsl_task.sendId = xsl_master.id
 	</select>
 
 	<select id="getItemById" parameterType="long" resultType="com.xsl.search.service.common.pojo.SearchItem">
 		SELECT
-			id,
-			cid,
-			descr,
-			sendId,
-			money,
-			state,
-			createDate,
-			updateDate,
-			deadline,
-			num
+			xsl_task.id,
+			xsl_task.cid,
+			xsl_task.taskId,
+			xsl_task.descr,
+			xsl_task.sendId,
+			xsl_task.money,
+			xsl_task.state,
+			xsl_task.createDate,
+			xsl_task.updateDate,
+			xsl_task.deadline,
+			xsl_task.number,
+			xsl_file.url,
+			xsl_user.name,
+			xsl_task_category.name 'task_name',
+			xsl_master.level
 		FROM
-			xsl_task
+			xsl_task,xsl_file,xsl_user,xsl_task_category,xsl_master
 		WHERE
-			id=#{itemid}
+			xsl_task.id=#{itemid}
+		AND
+			xsl_task.sendId = xsl_user.masterId
+		AND
+			xsl_user.id = xsl_file.userId
+		AND
+			xsl_task.cid = xsl_task_category.id
+		AND
+			xsl_task.sendId = xsl_master.id
 	</select>
 </mapper>
