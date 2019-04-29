@@ -10,6 +10,11 @@
     <artifactId>xsl-search-service</artifactId>
     <packaging>war</packaging>
     <dependencies>
+        <dependency>
+            <groupId>org.python</groupId>
+            <artifactId>jython-standalone</artifactId>
+            
+        </dependency>
         <!-- dubbo相关 -->
         <dependency>
             <groupId>com.alibaba</groupId>

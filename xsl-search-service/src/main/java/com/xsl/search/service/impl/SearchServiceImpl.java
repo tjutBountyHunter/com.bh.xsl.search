@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 
 /**
- * 商品搜索Service
+ * 搜索任务和猎人
  * <p>Title: SearchServiceImpl</p>
  * <p>Description: </p>
  * @version 1.0

@@ -8,9 +8,10 @@ import org.elasticsearch.transport.client.PreBuiltTransportClient;
 import java.net.InetAddress;
 
 
-//搜索节点
+//获取搜索节点
 public class EsServer {
     private TransportClient client;
+    //三个节点
     private static String[] hosts = new String[] {
             "47.93.19.164",
             "47.93.230.61",
