@@ -1,5 +1,6 @@
 package com.xsl.search.service.message;
 
+import com.xsl.search.export.vo.SearchItem;
 import com.xsl.search.service.es.EsServer;
 import com.xsl.search.service.mapper.ItemMapper;
 import org.elasticsearch.action.update.UpdateRequest;
