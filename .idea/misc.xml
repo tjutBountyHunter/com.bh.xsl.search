@@ -3,7 +3,10 @@
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/xsl-search" />
-    <file type="web" url="file://$PROJECT_DIR$/xsl-search-service" />
+    <file type="web" url="file://$PROJECT_DIR$/xsl_search_web" />
+  </component>
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="ES6" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
