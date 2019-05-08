@@ -1,4 +1,4 @@
-package com.xsl.search.service.es;
+package service;
 
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;

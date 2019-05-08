@@ -3,7 +3,7 @@ package com.xsl.search.service.impl;
 import com.xsl.search.export.vo.ResBaseVo;
 import com.xsl.search.export.vo.SearchHunter;
 import com.xsl.search.export.vo.SearchItem;
-import com.xsl.search.service.es.EsServer;
+import service.EsServer;
 import com.xsl.search.service.mapper.HunterMapper;
 import com.xsl.search.service.mapper.ItemMapper;
 import com.xsl.search.export.SearchItemService;

@@ -1,7 +1,7 @@
 package com.xsl.search.service.message;
 
 import com.xsl.search.service.mapper.ItemMapper;
-import com.xsl.search.service.es.EsServer;
+import service.EsServer;
 import org.elasticsearch.action.delete.DeleteResponse;
 import org.elasticsearch.client.transport.TransportClient;
 import org.springframework.beans.factory.annotation.Autowired;

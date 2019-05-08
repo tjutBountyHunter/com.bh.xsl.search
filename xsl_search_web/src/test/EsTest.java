@@ -1,4 +1,4 @@
-//import com.xsl.search.service.es.EsServer;
+//import service.EsServer;
 //import org.apache.activemq.ActiveMQConnectionFactory;
 //import org.elasticsearch.action.ActionFuture;
 //import org.elasticsearch.action.get.GetResponse;

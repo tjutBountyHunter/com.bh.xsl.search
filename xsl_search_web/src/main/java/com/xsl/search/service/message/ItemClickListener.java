@@ -1,6 +1,6 @@
 package com.xsl.search.service.message;
 
-import com.xsl.search.service.es.EsServer;
+import service.EsServer;
 import org.elasticsearch.action.update.UpdateRequest;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.script.Script;

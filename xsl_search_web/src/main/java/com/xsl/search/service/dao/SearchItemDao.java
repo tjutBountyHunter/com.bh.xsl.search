@@ -2,7 +2,7 @@ package com.xsl.search.service.dao;
 
 import com.xsl.search.export.vo.ItemTransfer;
 import com.xsl.search.export.vo.SearchResult;
-import com.xsl.search.service.es.EsServer;
+import service.EsServer;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.transport.TransportClient;
