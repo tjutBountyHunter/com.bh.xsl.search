@@ -6,12 +6,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="common" />
-        <module name="common (1)" />
-        <module name="xsl-search-export" />
-        <module name="xsl-search-export (1)" />
-        <module name="xsl-search-service" />
-        <module name="xsl-search-service (1)" />
         <module name="xsl_search_common" />
         <module name="xsl_search_dao" />
         <module name="xsl_search_domain" />
@@ -21,10 +15,10 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="common (1)" target="1.7" />
-      <module name="xsl-search-export (1)" target="1.7" />
+      <module name="common" target="1.7" />
+      <module name="xsl-search-export" target="1.7" />
       <module name="xsl-search-interface" target="1.7" />
-      <module name="xsl-search-service (1)" target="1.7" />
+      <module name="xsl-search-service" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

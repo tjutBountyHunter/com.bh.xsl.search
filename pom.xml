@@ -16,6 +16,7 @@
         <module>xsl_search_dao</module>
         <module>xsl_search_domain</module>
         <module>xsl_search_service</module>
+        <module>xsl_search_domain</module>
     </modules>
 
     <distributionManagement>
