@@ -33,7 +33,7 @@
         <constructor-arg value="alterHunterMQ" />
     </bean>
 
-    <bean id="myMessageListener" class="com.xsl.search.service.message.MyMessageListener"/>
+    <bean id="myMessageListener" class="listener.MyMessageListener"/>
     <!-- 消息监听容器 -->
     <bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
         <property name="connectionFactory" ref="connectionFactory" />
@@ -41,7 +41,7 @@
         <property name="messageListener" ref="myMessageListener" />
     </bean>
     <!-- 监听任务添加猎人，同步索引库 -->
-    <bean id="hunterAddMessageListener" class="com.xsl.search.service.message.HunterAddMessageListener"/>
+    <bean id="hunterAddMessageListener" class="listener.HunterAddMessageListener"/>
     <bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
         <property name="connectionFactory" ref="connectionFactory" />
         <property name="destination" ref="topicHunterAddDestination" />
@@ -49,7 +49,7 @@
     </bean>
 
     <!-- 监听更新猎人，同步索引库 -->
-    <bean id="hunterUpdateMessageListener" class="com.xsl.search.service.message.HunterUpdateMessageListener"/>
+    <bean id="hunterUpdateMessageListener" class="listener.HunterUpdateMessageListener"/>
     <bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
         <property name="connectionFactory" ref="connectionFactory" />
         <property name="destination" ref="topicHunterUpdateDestination" />

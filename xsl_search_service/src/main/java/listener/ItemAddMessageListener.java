@@ -1,13 +1,11 @@
-package com.xsl.search.service.message;
+package listener;
 
 import com.xsl.search.export.vo.SearchItem;
-import service.EsServer;
-import com.xsl.search.service.mapper.ItemMapper;
+import com.xsl.search.service.common.util.EsServer;
 import org.elasticsearch.action.bulk.BulkRequestBuilder;
 import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.xcontent.XContentFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.jms.Message;
 import javax.jms.MessageListener;
@@ -22,8 +20,6 @@ import javax.jms.TextMessage;
  */
 public class ItemAddMessageListener implements MessageListener {
 
-	@Autowired
-	private ItemMapper itemMapper;
 
 	private EsServer esServer;
 
@@ -35,8 +31,7 @@ public class ItemAddMessageListener implements MessageListener {
 
 			System.out.println("Add_Item_MQ");
 			// 创建client
-			esServer = new EsServer();
-			TransportClient client = esServer.getClient();
+			TransportClient client = EsServer.getClient();
 
 			BulkRequestBuilder bulkBuilder = client.prepareBulk();
 
@@ -47,7 +42,7 @@ public class ItemAddMessageListener implements MessageListener {
 			//等待事务提交
 			Thread.sleep(1000);
 			//根据商品id查询商品信息
-			SearchItem searchItem = itemMapper.getItemById(itemId);
+			SearchItem searchItem = null;
 			if(searchItem == null){
 				throw new Exception("添加任务过程中查询数据库失败");
 			}

@@ -1,8 +1,7 @@
-package com.xsl.search.service.message;
+package listener;
 
 import com.xsl.search.export.vo.SearchItem;
-import service.EsServer;
-import com.xsl.search.service.mapper.ItemMapper;
+import com.xsl.search.service.common.util.EsServer;
 import org.elasticsearch.action.update.UpdateRequest;
 import org.elasticsearch.action.update.UpdateResponse;
 import org.elasticsearch.client.transport.TransportClient;
@@ -15,10 +14,6 @@ import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 
 public class ItemUpdateMessageListener implements MessageListener {
-    @Autowired
-    private ItemMapper itemMapper;
-
-
     private EsServer esServer;
 
 
@@ -27,8 +22,7 @@ public class ItemUpdateMessageListener implements MessageListener {
         try {
 
             System.out.println("Update_Item_MQ");
-            esServer = new EsServer();
-            TransportClient client = esServer.getClient();
+            TransportClient client = EsServer.getClient();
             UpdateRequest request = new UpdateRequest();
             //从消息中取商品id
             TextMessage textMessage = (TextMessage) message;
@@ -37,7 +31,7 @@ public class ItemUpdateMessageListener implements MessageListener {
             //等待事务提交
             Thread.sleep(1000);
             //根据商品id查询商品信息
-            SearchItem searchItem = itemMapper.getItemById(itemId);
+            SearchItem searchItem = null;
             if(searchItem == null){
                 throw new Exception("更新任务过程中查询数据库失败");
             }

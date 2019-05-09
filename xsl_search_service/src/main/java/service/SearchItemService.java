@@ -1,4 +1,4 @@
-package com.xsl.search.export;
+package service;
 
 
 import com.xsl.search.export.vo.ResBaseVo;

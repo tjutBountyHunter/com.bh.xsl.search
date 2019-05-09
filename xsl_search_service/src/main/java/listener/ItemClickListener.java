@@ -1,6 +1,6 @@
-package com.xsl.search.service.message;
+package listener;
 
-import service.EsServer;
+import com.xsl.search.service.common.util.EsServer;
 import org.elasticsearch.action.update.UpdateRequest;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.script.Script;
@@ -20,8 +20,7 @@ public class ItemClickListener implements MessageListener {
     public void onMessage(Message message) {
         try {
             System.out.println("Click_Item_MQ");
-            esServer = new EsServer();
-            TransportClient client = esServer.getClient();
+            TransportClient client = EsServer.getClient();
             //从消息中取商品id
             TextMessage textMessage = (TextMessage) message;
             String itemId = textMessage.getText();

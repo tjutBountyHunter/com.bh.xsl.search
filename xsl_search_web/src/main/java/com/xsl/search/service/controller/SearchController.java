@@ -2,8 +2,9 @@ package com.xsl.search.service.controller;
 
 //import org.apache.commons.lang3.StringUtils;
 
-import com.xsl.search.export.SearchService;
+import com.xsl.search.export.SearchResource;
 import com.xsl.search.export.vo.SearchResult;
+import com.xsl.search.export.vo.TaskInfoVo;
 import com.xsl.search.service.common.XslResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import service.SearchService;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  *
@@ -62,5 +67,22 @@ public class SearchController {
 		}
 		return XslResult.ok(searchResult);
 	}
+
+
+	@RequestMapping(value="/test")
+	@ResponseBody
+	public XslResult search_hunter(TaskInfoVo taskInfoVo) {
+		int test = searchService.addTaskToEs(taskInfoVo);
+		return XslResult.ok(test);
+	}
+
+	@RequestMapping(value="/test2")
+	@ResponseBody
+	public List<TaskInfoVo> search(String keyword, String[] taskIds, int size) {
+		List<TaskInfoVo> test = searchService.searchTask(keyword, Arrays.asList(taskIds), size);
+		return test;
+	}
+
+
 
 }

@@ -22,6 +22,12 @@
             <artifactId>xsl_search_export</artifactId>
         </dependency>
 
+        <!--python-->
+        <dependency>
+            <groupId>org.python</groupId>
+            <artifactId>jython-standalone</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

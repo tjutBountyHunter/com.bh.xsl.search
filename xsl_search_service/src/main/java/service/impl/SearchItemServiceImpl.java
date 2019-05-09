@@ -1,17 +1,14 @@
-package com.xsl.search.service.impl;
+package service.impl;
 
 import com.xsl.search.export.vo.ResBaseVo;
 import com.xsl.search.export.vo.SearchHunter;
 import com.xsl.search.export.vo.SearchItem;
-import service.EsServer;
-import com.xsl.search.service.mapper.HunterMapper;
-import com.xsl.search.service.mapper.ItemMapper;
-import com.xsl.search.export.SearchItemService;
+import com.xsl.search.service.common.util.EsServer;
+import service.SearchItemService;
 import org.elasticsearch.action.bulk.BulkRequestBuilder;
 import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.xcontent.XContentFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.net.UnknownHostException;
@@ -29,24 +26,16 @@ import java.util.List;
  */
 @Service
 public class SearchItemServiceImpl implements SearchItemService {
-
-	@Autowired
-	private ItemMapper itemMapper;
-
-	@Autowired
-	private HunterMapper hunterMapper;
-
 	private EsServer esServer;
 	
 	@Override
 	public ResBaseVo importAllItems() throws UnknownHostException {
 		// 创建client
-		esServer = new EsServer();
-		TransportClient client = esServer.getClient();
+		TransportClient client = EsServer.getClient();
 		BulkRequestBuilder bulkBuilder = client.prepareBulk();
 		try {
 			//查询商品列表
-			List<SearchItem> itemList = itemMapper.getItemList();
+			List<SearchItem> itemList = null;
 			Calendar nowTime = Calendar.getInstance();
 
 			//遍历商品列表
@@ -88,12 +77,11 @@ public class SearchItemServiceImpl implements SearchItemService {
 	@Override
 	public ResBaseVo importAllHunter() throws UnknownHostException {
 		// 创建client
-		esServer = new EsServer();
-		TransportClient client = esServer.getClient();
+		TransportClient client = EsServer.getClient();
 		BulkRequestBuilder bulkBuilder = client.prepareBulk();
 		try {
 			//查询商品列表
-			List<SearchHunter> hunterList = hunterMapper.getHunterList();
+			List<SearchHunter> hunterList = null;
 			Calendar nowTime = Calendar.getInstance();
 
 			//遍历商品列表

@@ -1,13 +1,11 @@
-package com.xsl.search.service.message;
+package listener;
 
 import com.xsl.search.export.vo.SearchHunter;
-import service.EsServer;
-import com.xsl.search.service.mapper.HunterMapper;
+import com.xsl.search.service.common.util.EsServer;
 import org.elasticsearch.action.bulk.BulkRequestBuilder;
 import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.xcontent.XContentFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.jms.Message;
 import javax.jms.MessageListener;
@@ -15,8 +13,6 @@ import javax.jms.TextMessage;
 
 public class HunterAddMessageListener implements MessageListener {
 
-    @Autowired
-    private HunterMapper hunterMapper;
 
     private EsServer esServer;
 
@@ -27,8 +23,7 @@ public class HunterAddMessageListener implements MessageListener {
         try {
 
             // 创建client
-            esServer = new EsServer();
-            TransportClient client = esServer.getClient();
+            TransportClient client = EsServer.getClient();
 
             BulkRequestBuilder bulkBuilder = client.prepareBulk();
 
@@ -39,7 +34,7 @@ public class HunterAddMessageListener implements MessageListener {
             //等待事务提交
             Thread.sleep(1000);
             //根据商品id查询商品信息
-            SearchHunter searchHunter = hunterMapper.getHunterById(itemId);
+            SearchHunter searchHunter = null;
             if(searchHunter == null){
                 throw new Exception("添加猎人时查询数据表失败");
             }

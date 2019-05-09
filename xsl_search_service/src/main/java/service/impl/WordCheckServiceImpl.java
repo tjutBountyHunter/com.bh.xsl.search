@@ -1,6 +1,6 @@
-package com.xsl.search.service.impl;
+package service.impl;
 
-import com.xsl.search.export.WordCheckService;
+import service.WordCheckService;
 import org.python.core.Py;
 import org.python.core.PyByteArray;
 import org.python.core.PySystemState;

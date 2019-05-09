@@ -1,7 +1,6 @@
-package com.xsl.search.service.message;
+package listener;
 
-import com.xsl.search.service.mapper.ItemMapper;
-import service.EsServer;
+import com.xsl.search.service.common.util.EsServer;
 import org.elasticsearch.action.delete.DeleteResponse;
 import org.elasticsearch.client.transport.TransportClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +10,6 @@ import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 
 public class ItemDeleteMessageListener implements MessageListener {
-    @Autowired
-    private ItemMapper itemMapper;
 
 
     private EsServer esServer;
@@ -22,8 +19,7 @@ public class ItemDeleteMessageListener implements MessageListener {
 
         try {
             System.out.println("Delete_Item_MQ");
-            esServer = new EsServer();
-            TransportClient client = esServer.getClient();
+            TransportClient client = EsServer.getClient();
 
 
 

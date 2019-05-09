@@ -1,4 +1,4 @@
-package com.xsl.search.service.message;
+package listener;
 
 import javax.jms.JMSException;
 import javax.jms.Message;
@@ -18,8 +18,6 @@ public class MyMessageListener implements MessageListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-
 	}
 
 }

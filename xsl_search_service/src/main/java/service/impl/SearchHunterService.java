@@ -1,9 +1,9 @@
-package com.xsl.search.service.dao;
+package service.impl;
 
 import com.xsl.search.export.vo.HunterTransfer;
 import com.xsl.search.export.vo.SearchItem;
 import com.xsl.search.export.vo.SearchResult;
-import service.EsServer;
+import com.xsl.search.service.common.util.EsServer;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.transport.TransportClient;
@@ -23,7 +23,7 @@ import static org.elasticsearch.index.query.QueryBuilders.functionScoreQuery;
 
 
 @Repository
-public class SearchHunterDao {
+public class SearchHunterService {
 
     private EsServer esServer;
 
@@ -35,8 +35,7 @@ public class SearchHunterDao {
 
     public SearchResult search(String keyword, int page, int rows , int search_type) throws Exception {
         SearchResult result = new SearchResult();
-        esServer = new EsServer();
-        TransportClient client = esServer.getClient();
+        TransportClient client = EsServer.getClient();
         SearchRequestBuilder requestBuilder = client.prepareSearch("test2")
                 .setTypes("hunter").setQuery(functionScoreQuery(QueryBuilders.matchPhraseQuery("descr", keyword)));
         switch (search_type){

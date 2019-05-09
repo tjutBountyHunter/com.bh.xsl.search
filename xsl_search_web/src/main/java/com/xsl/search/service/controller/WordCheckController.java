@@ -1,6 +1,6 @@
 package com.xsl.search.service.controller;
 
-import com.xsl.search.export.WordCheckService;
+import service.WordCheckService;
 import com.xsl.search.service.common.XslResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

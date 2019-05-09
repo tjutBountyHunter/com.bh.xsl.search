@@ -1,8 +1,7 @@
 package com.xsl.search.service.controller;
 
-import com.xsl.search.export.SearchItemService;
+import service.SearchItemService;
 import com.xsl.search.export.vo.ResBaseVo;
-import com.xsl.search.service.common.XslResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
