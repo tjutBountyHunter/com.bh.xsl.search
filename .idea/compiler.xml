@@ -15,10 +15,18 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="com.bh.xsl.search" target="1.7" />
       <module name="common" target="1.7" />
+      <module name="xsl-search" target="1.7" />
       <module name="xsl-search-export" target="1.7" />
       <module name="xsl-search-interface" target="1.7" />
       <module name="xsl-search-service" target="1.7" />
+      <module name="xsl_search_common" target="1.7" />
+      <module name="xsl_search_dao" target="1.7" />
+      <module name="xsl_search_domain" target="1.7" />
+      <module name="xsl_search_export" target="1.7" />
+      <module name="xsl_search_service" target="1.7" />
+      <module name="xsl_search_web" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
