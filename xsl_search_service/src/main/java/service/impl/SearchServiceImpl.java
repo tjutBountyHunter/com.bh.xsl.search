@@ -27,6 +27,7 @@ import java.util.List;
  * <p>Description: </p>
  * @version 1.0
  */
+
 @Service
 public class SearchServiceImpl implements SearchService {
     @Override
@@ -90,7 +91,7 @@ public class SearchServiceImpl implements SearchService {
         //组合查询
         BoolQueryBuilder queryBuilders = QueryBuilders.boolQuery()
                                            .must(QueryBuilders.rangeQuery("state").from(0).to(1))
-                                           .must(QueryBuilders.commonTermsQuery("taskId", taskIds));
+                                           .must(QueryBuilders.matchQuery("taskId", taskIds));
         if(!StringUtils.isEmpty(keyword)){
             queryBuilders.must(QueryBuilders.boolQuery().should(QueryBuilders.matchQuery("taskTitle", keyword)).should(QueryBuilders.matchQuery("content", keyword)));
         }
