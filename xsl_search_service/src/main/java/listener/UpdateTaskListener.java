@@ -50,7 +50,6 @@ public class UpdateTaskListener implements MessageListener {
 
 			//提交
 			UpdateResponse response = client.prepareUpdate("task_info", "task",updateTaskVo.getTaskId()).setDoc(builder).get();
-			client.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
