@@ -1,6 +1,7 @@
 package listener;
 
 import com.xsl.search.export.vo.TaskInfoVo;
+import com.xsl.search.service.common.util.GsonSingle;
 import org.elasticsearch.action.bulk.BulkRequestBuilder;
 import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.client.transport.TransportClient;
@@ -10,6 +11,8 @@ import com.xsl.search.service.common.util.EsServer;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.ObjectMessage;
+import javax.jms.TextMessage;
+import java.io.Serializable;
 
 public class AddTaskListener implements MessageListener {
 
@@ -23,9 +26,11 @@ public class AddTaskListener implements MessageListener {
 
         try {
             //从消息中取商品id
-            ObjectMessage objectMessage = (ObjectMessage) message;
-            TaskInfoVo taskInfo = (TaskInfoVo) objectMessage.getObject();
-            //向文档对象中添加域
+			TextMessage textMessage = (TextMessage) message;
+			String text = textMessage.getText();
+			TaskInfoVo taskInfo = GsonSingle.getGson().fromJson(text, TaskInfoVo.class);
+
+                    //向文档对象中添加域
             bulkBuilder.add(client.prepareIndex("task_info", "task",taskInfo.getTaskId())
                     .setSource(
                             XContentFactory.jsonBuilder()

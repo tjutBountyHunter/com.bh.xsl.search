@@ -14,6 +14,7 @@ import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.xcontent.XContentFactory;
 import org.springframework.stereotype.Service;
 import com.xsl.search.service.common.util.EsServer;
+import org.springframework.util.StringUtils;
 import service.SearchService;
 
 import java.util.ArrayList;
@@ -87,9 +88,12 @@ public class SearchServiceImpl implements SearchService {
 
         //组合查询
         BoolQueryBuilder queryBuilders = QueryBuilders.boolQuery()
-                                           .must(QueryBuilders.matchQuery("content", keyword))
                                            .must(QueryBuilders.rangeQuery("state").from(0).to(1))
                                            .must(QueryBuilders.commonTermsQuery("taskId", taskIds));
+        if(!StringUtils.isEmpty(keyword)){
+            queryBuilders.must(QueryBuilders.matchQuery("content", keyword));
+        }
+
 
         //執行查詢
         SearchResponse sr = client.prepareSearch("task_info")
