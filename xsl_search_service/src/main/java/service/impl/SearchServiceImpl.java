@@ -91,7 +91,7 @@ public class SearchServiceImpl implements SearchService {
                                            .must(QueryBuilders.rangeQuery("state").from(0).to(1))
                                            .must(QueryBuilders.commonTermsQuery("taskId", taskIds));
         if(!StringUtils.isEmpty(keyword)){
-            queryBuilders.must(QueryBuilders.matchQuery("content", keyword));
+            queryBuilders.must(QueryBuilders.boolQuery().should(QueryBuilders.matchQuery("taskTitle", keyword)).should(QueryBuilders.matchQuery("content", keyword)));
         }
 
 
