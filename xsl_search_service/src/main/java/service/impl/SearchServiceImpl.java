@@ -12,6 +12,7 @@ import org.elasticsearch.action.bulk.BulkRequestBuilder;
 import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.xcontent.XContentFactory;
+import org.elasticsearch.search.sort.SortOrder;
 import org.springframework.stereotype.Service;
 import com.xsl.search.service.common.util.EsServer;
 import org.springframework.util.StringUtils;
@@ -94,11 +95,11 @@ public class SearchServiceImpl implements SearchService {
             queryBuilders.must(QueryBuilders.boolQuery().should(QueryBuilders.matchQuery("taskTitle", keyword)).should(QueryBuilders.matchQuery("content", keyword)));
         }
 
-
         //執行查詢
         SearchResponse sr = client.prepareSearch("task_info")
                 .setTypes("task")
                 .setQuery(queryBuilders)
+                .addSort("createDate.keyword", SortOrder.DESC)
                 .setSize(size)
                 .execute()
                 .actionGet();
