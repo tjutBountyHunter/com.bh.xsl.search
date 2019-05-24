@@ -58,8 +58,6 @@
         <property name="messageListener" ref="updateTaskListener" />
     </bean>
 
-
-
     <!-- 监听任务添加消息，同步索引库 -->
     <bean id="itemAddMessageListener" class="listener.ItemAddMessageListener"/>
     <bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">

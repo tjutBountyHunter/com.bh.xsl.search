@@ -16,17 +16,7 @@ public class SearchResourceImpl implements SearchResource {
 	private SearchService searchService;
 
 	@Override
-	public SearchResult search_item(String keyword, int page, int rows, int sort_type) throws Exception {
-		return null;
-	}
-
-	@Override
-	public SearchResult search_hunter(String keyword, int page, int rows, int sort_type) throws Exception {
-		return null;
-	}
-
-	@Override
-	public int test(TaskInfoVo taskInfoVo) {
+	public int addTaskToEs(TaskInfoVo taskInfoVo) {
 		return searchService.addTaskToEs(taskInfoVo);
 	}
 

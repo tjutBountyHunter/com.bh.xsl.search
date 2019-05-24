@@ -7,6 +7,8 @@ import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.xcontent.XContentFactory;
 import com.xsl.search.service.common.util.EsServer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.jms.Message;
 import javax.jms.MessageListener;
@@ -16,7 +18,7 @@ import java.io.Serializable;
 
 public class AddTaskListener implements MessageListener {
 
-    private EsServer esServer;
+    private static final Logger LOGGER = LoggerFactory.getLogger(AddTaskListener.class);
 
     @Override
     public void onMessage(Message message) {
@@ -29,6 +31,7 @@ public class AddTaskListener implements MessageListener {
 			TextMessage textMessage = (TextMessage) message;
 			String text = textMessage.getText();
 			TaskInfoVo taskInfo = GsonSingle.getGson().fromJson(text, TaskInfoVo.class);
+            LOGGER.info("AddTaskListener TaskInfoVo:{}", GsonSingle.getGson().toJson(taskInfo));
 
                     //向文档对象中添加域
             bulkBuilder.add(client.prepareIndex("task_info", "task",taskInfo.getTaskId())
