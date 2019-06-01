@@ -1,5 +1,6 @@
 package service.impl;
 
+import com.xsl.search.export.GxzdSearchService;
 import com.xsl.search.export.vo.MatchSearchVo;
 import com.xsl.search.export.vo.MatchTeamSearchVo;
 import com.xsl.search.export.vo.MatchUserSearchVo;
@@ -15,7 +16,6 @@ import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.sort.SortOrder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-import service.GxzdSearchService;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,5 +1,6 @@
 package service.impl;
 
+import com.xsl.search.export.GxzdAddSearchService;
 import com.xsl.search.export.vo.MatchSearchVo;
 import com.xsl.search.export.vo.MatchTeamSearchVo;
 import com.xsl.search.export.vo.MatchUserSearchVo;
@@ -9,7 +10,7 @@ import org.elasticsearch.action.bulk.BulkRequestBuilder;
 import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.xcontent.XContentFactory;
-import service.GxzdAddSearchService;
+import org.springframework.stereotype.Service;
 
 /**
  * 说明：
@@ -18,11 +19,12 @@ import service.GxzdAddSearchService;
  * @Date: 2019/5/25 17:58
  * @Description:
  */
+@Service
 public class GxzdAddSearchServiceImpl implements GxzdAddSearchService {
 
 	@Override
 	/** 添加用户 */
-	public XslResult addMatchUser(MatchUserSearchVo matchUserSearchVo) throws RuntimeException {
+	public boolean addMatchUser(MatchUserSearchVo matchUserSearchVo) throws RuntimeException {
 		// 创建client
 		TransportClient client = EsServer.getClient();
 		BulkRequestBuilder bulkBuilder = client.prepareBulk();
@@ -48,12 +50,12 @@ public class GxzdAddSearchServiceImpl implements GxzdAddSearchService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return XslResult.ok();
+		return true;
 	}
 
 	@Override
 	/** 添加比赛 */
-	public XslResult addMatch(MatchSearchVo matchSearchVo) throws RuntimeException {
+	public boolean addMatch(MatchSearchVo matchSearchVo) throws RuntimeException {
 		// 创建client
 		TransportClient client = EsServer.getClient();
 		BulkRequestBuilder bulkBuilder = client.prepareBulk();
@@ -66,7 +68,7 @@ public class GxzdAddSearchServiceImpl implements GxzdAddSearchService {
 									.field("matchid", matchSearchVo.getMatchid())
 									.field("matchaddress",matchSearchVo.getMatchaddress())
 									.field("matchinfo", matchSearchVo.getMatchinfo())
-									.field("matchname", matchSearchVo.getMatchinfo())
+									.field("matchname", matchSearchVo.getMatchname())
 									.field("matchposterurl", matchSearchVo.getMatchposterurl())
 									.endObject()
 					)
@@ -76,12 +78,12 @@ public class GxzdAddSearchServiceImpl implements GxzdAddSearchService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return XslResult.ok();
+		return true;
 	}
 
 	@Override
 	/** 添加队伍 */
-	public XslResult addMatchTeam(MatchTeamSearchVo matchTeamSearchVo) throws RuntimeException {
+	public boolean addMatchTeam(MatchTeamSearchVo matchTeamSearchVo) throws RuntimeException {
 		// 创建client
 		TransportClient client = EsServer.getClient();
 		BulkRequestBuilder bulkBuilder = client.prepareBulk();
@@ -104,6 +106,6 @@ public class GxzdAddSearchServiceImpl implements GxzdAddSearchService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return XslResult.ok();
+		return true;
 	}
 }
