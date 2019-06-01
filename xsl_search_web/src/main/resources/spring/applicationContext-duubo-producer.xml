@@ -13,4 +13,7 @@
 
     <bean id="searchResource" class="com.xsl.search.service.controller.resourceImpl.SearchResourceImpl"/>
     <dubbo:service interface="com.xsl.search.export.SearchResource" ref="searchResource" timeout="600000"/>
+    <dubbo:service interface="com.xsl.search.export.GxzdRemoveSearchService" ref="gxzdRemoveSearchService" timeout="60000"/>
+    <dubbo:service interface="com.xsl.search.export.GxzdAddSearchService" ref="gxzdAddSearchService" timeout="60000"/>
+    <dubbo:service interface="com.xsl.search.export.GxzdSearchService" ref="gxzdSearchService" timeout="60000"/>
 </beans>
