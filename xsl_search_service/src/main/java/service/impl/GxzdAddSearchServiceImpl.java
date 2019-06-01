@@ -1,16 +1,16 @@
 package service.impl;
 
-import com.xsl.search.export.GxzdAddSearchService;
+import com.xsl.search.export.GxzdAddSearchResource;
 import com.xsl.search.export.vo.MatchSearchVo;
 import com.xsl.search.export.vo.MatchTeamSearchVo;
 import com.xsl.search.export.vo.MatchUserSearchVo;
-import com.xsl.search.service.common.XslResult;
 import com.xsl.search.service.common.util.EsServer;
 import org.elasticsearch.action.bulk.BulkRequestBuilder;
 import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.xcontent.XContentFactory;
 import org.springframework.stereotype.Service;
+import service.GxzdAddSearchService;
 
 /**
  * 说明：
