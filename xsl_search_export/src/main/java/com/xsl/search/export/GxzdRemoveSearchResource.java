@@ -11,12 +11,12 @@ import com.xsl.search.export.vo.MatchUserSearchVo;
   * @Date: 2019/5/25 17:46
   * @Description:
   */
- public interface GxzdRemoveSearchService {
+ public interface GxzdRemoveSearchResource {
 
      /** 删除用户 */
-     boolean removeMatchUser(MatchUserSearchVo matchUserSearchVo)throws RuntimeException;
+     boolean removeMatchUser(String matchUserSearchVo)throws RuntimeException;
      /** 删除比赛 */
-     boolean removeMatch(MatchSearchVo matchSearchVo)throws RuntimeException;
+     boolean removeMatch(String matchSearchVo)throws RuntimeException;
      /** 删除队伍 */
-     boolean removeMatchTeam(MatchTeamSearchVo matchTeamSearchVo)throws RuntimeException;
+     boolean removeMatchTeam(String matchTeamSearchVo)throws RuntimeException;
  }
